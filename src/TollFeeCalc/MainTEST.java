@@ -25,7 +25,7 @@ public class MainTEST {
         assertTrue(Main.CostFreeDay(date3));
     }
     @Test  //2
-    @DisplayName("Test Max Time")
+    @DisplayName("Test Cost > 60")
     void GetMaximumCost() {
         LocalDateTime[] date = new LocalDateTime[6];
         date[0] = LocalDateTime.parse("2020-10-05 06:10", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
@@ -95,8 +95,6 @@ public class MainTEST {
     @Test //9
     @DisplayName("Test Different Format")
     void WrongFormat () {
-       // Scanner sc = new Scanner(System.in);
-        System.out.println();
         String expectedOutput1 = "The File Contains a Format Which Cannot Be Identified" + "\n**** Loading New Vehicle ****";
         assertEquals(expectedOutput1,Main.TollFeeCalc("src/Vehicle5"));
     }
@@ -104,7 +102,6 @@ public class MainTEST {
     @Test //10
     @DisplayName("Test For Cost Of a File That Does Not Exist")
     void NonExistFile () {
-    //Testing FileNotFoundException
         String expectedOutput1 = "Can not open or read Vehicle";
         assertEquals(expectedOutput1,Main.TollFeeCalc("src/NonExistFile.txt"));
     }
