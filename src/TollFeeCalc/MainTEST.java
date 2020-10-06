@@ -18,7 +18,7 @@ public class MainTEST {
         LocalDateTime date2 = LocalDateTime.parse("2020-07-23 18:50"
                 ,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         LocalDateTime date3 = LocalDateTime.parse("2020-07-03 04:00"
-                , DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                ,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
         assertTrue(Main.CostFreeDay(date1));
         assertTrue(Main.CostFreeDay(date2));
@@ -94,15 +94,18 @@ public class MainTEST {
 
     @Test //9
     @DisplayName("Test Different Format")
-    void WrongFormat () {
-        String expectedOutput1 = "The File Contains a Format Which Cannot Be Identified" + "\n**** Loading New Vehicle ****";
-        assertEquals(expectedOutput1,Main.TollFeeCalc("src/Vehicle5"));
+    void DifferentFormat () {
+        LocalDateTime[] date = new LocalDateTime[2];
+        date[0] = LocalDateTime.parse("10-10-2020 07:50", DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        date[1] = LocalDateTime.parse("10-10-2020 14:00", DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        assertEquals(0, Main.GetTotalCost(date));
     }
 
     @Test //10
-    @DisplayName("Test For Cost Of a File That Does Not Exist")
-    void NonExistFile () {
-        String expectedOutput1 = "Can not open or read Vehicle";
-        assertEquals(expectedOutput1,Main.TollFeeCalc("src/NonExistFile.txt"));
+    @DisplayName("Test One Passage")
+    void OnePassagePerDay () {
+        LocalDateTime[] date = new LocalDateTime[1];
+        date[0] = LocalDateTime.parse("2020-10-07 15:10", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        assertEquals(13, Main.GetTotalCost(date));
     }
 }
