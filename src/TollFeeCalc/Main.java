@@ -1,5 +1,5 @@
 package TollFeeCalc;
-//Mudasser & Islam
+//Mudasser Abbass & Islam Mohamed
 import java.util.Scanner;
 import java.io.File;
 import java.time.LocalDateTime;
@@ -9,7 +9,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Main {
 
-    public static void TollFeeCalc(String inputFile) {
+    public static byte TollFeeCalc(String inputFile) {
 
         try {
             Scanner sc = new Scanner(new File(inputFile));
@@ -24,11 +24,12 @@ public class Main {
 
         } catch(IOException e) {
             System.err.println("Can not open or read Vehicle " + inputFile);
-            System.out.println("**** Loading New Vehicle ****");
+            System.err.println("**** Loading New Vehicle ****");
         } catch (Exception e){
-            System.err.println("The dates for this Vehicle are in a wrong format");
-            System.out.println("**** Loading New Vehicle ****");
+            System.err.println("The File Contains a Format Which Cannot Be Identified");
+            System.err.println("**** Loading New Vehicle ****");
         }
+        return 0;
     }
 
     public static int GetTotalCost (LocalDateTime[] dates) {
@@ -82,13 +83,10 @@ public class Main {
     }
 
     public static void main(String[] args)  {
-
         System.out.println("**** Loading New Vehicle ****");
-
         TollFeeCalc("src/Vehicle1");
         TollFeeCalc("src/Vehicle2");
         TollFeeCalc("src/Vehicle3");
         TollFeeCalc("src/Vehicle4");
-
     }
 }
