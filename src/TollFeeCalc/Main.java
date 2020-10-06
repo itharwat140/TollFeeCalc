@@ -85,10 +85,10 @@ public class Main {
 
         System.out.println("**** Loading New Vehicle ****");
 
-        TollFeeCalc("D:\\Projects\\Java\\TollFeeCalc\\src\\Vehicle1");
-        TollFeeCalc("D:\\Projects\\Java\\TollFeeCalc\\src\\Vehicle2");
-        TollFeeCalc("D:\\Projects\\Java\\TollFeeCalc\\src\\Vehicle3");
-        TollFeeCalc("D:\\Projects\\Java\\TollFeeCalc\\src\\Vehicle4");
+        TollFeeCalc("src/Vehicle1");
+        TollFeeCalc("src/Vehicle2");
+        TollFeeCalc("src/Vehicle3");
+        TollFeeCalc("src/Vehicle4");
 
     }
 }

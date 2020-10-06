@@ -1,5 +1,7 @@
-1- if we change the format from year-month-day.
+1- if we change the format from year-month-day to day-month-year.
 2- if we change from int to string.
 3- if we put the date and time in more than one line.
 4- if we put more than one day in the same text it will count all as one day.
-5-
+5- if we change the regex from , to -.
+6- if we change the format from 2020-06-05 to 2020/06/05.
+7-
