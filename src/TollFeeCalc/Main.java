@@ -1,16 +1,17 @@
 package TollFeeCalc;
 //Mudasser Abbass & Islam Mohamed
-import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
-import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
 
 public class Main {
 
-    public static byte TollFeeCalc(String inputFile) {
-
+    public static String TollFeeCalc(String inputFile) throws DateTimeParseException{
+        String errorMessage = "";
         try {
             Scanner sc = new Scanner(new File(inputFile));
             String[] Vehicles = sc.nextLine().split(", ");
@@ -21,15 +22,16 @@ public class Main {
             System.out.println("The Total Payment for the current Vehicle: " + GetTotalCost(dates));
             System.out.println("Getting Input From New Vehicle, Please Wait");
             System.out.println("*******************************************");
-
-        } catch(IOException e) {
-            System.err.println("Can not open or read Vehicle " + inputFile);
+        } catch(FileNotFoundException e) {
+            System.err.println("Can not open or read Vehicle");
             System.err.println("**** Loading New Vehicle ****");
-        } catch (Exception e){
+            errorMessage = "Can not open or read Vehicle\n" + "**** Loading New Vehicle ****";
+        } catch (DateTimeParseException e){
             System.err.println("The File Contains a Format Which Cannot Be Identified");
             System.err.println("**** Loading New Vehicle ****");
+            errorMessage = "The File Contains a Format Which Cannot Be Identified\n" + "**** Loading New Vehicle ****";
         }
-        return 0;
+        return errorMessage;
     }
 
     public static int GetTotalCost (LocalDateTime[] dates) {
@@ -90,3 +92,4 @@ public class Main {
         TollFeeCalc("src/Vehicle4");
     }
 }
+
